@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tablo Yönetimi | Admin Panel</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" >
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/layer.css">
+</head>
+<body>
+  <div class="sidebar">
+    <button onclick="goToDashboard()" title="Dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+    </button>
+    <button class="users-btn active" onclick="goToUsers()" title="Kullanıcılar">
+        <i class="fa-solid fa-users"></i>
+    </button>
+    <button onclick="goToSQL()" title="SQL Sorgu">
+        <i class="fa-solid fa-database"></i>
+    </button>
+    <button class="active" onclick="goToLogs()" title="Loglar">
+      <i class="fa-solid fa-file-alt"></i>
+    </button>
+    <button onclick="goToImport()" title="Import">
+        <i class="fa-solid fa-upload"></i>
+    </button>
+    <button class="active" onclick="goToLayers()"><i class="bi bi-table"></i></button>
+    <button class="logout-btn" onclick="logout()" title="Çıkış Yap">
+        <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+</div>
+
+  <div class="container">
+    <!-- Sol: Tablolar -->
+    <div class="table-list">
+      <h5>Tablolar</h5>
+      <div id="tableList"></div>
+    </div>
+
+    <!-- Sağ: Detaylar -->
+    <div class="table-details">
+      <h4 id="selectedTableTitle">Bir tablo seçin...</h4>
+      <div id="columnsContainer"></div>
+    </div>
+  </div>
+
+  <!-- Yeni Tablo Oluşturma Butonu -->
+  <button class="add-table-button" onclick="openCreateTableModal()">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <!-- Modal: Yeni Tablo -->
+  <div class="modal fade" id="createTableModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Yeni Tablo Oluştur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <label>Tablo Adı</label>
+          <input type="text" id="newTableName" class="form-control mb-2">
+          <div id="newTableColumns"></div>
+          <button class="btn btn-sm btn-secondary" onclick="addNewTableColumn()">+ Sütun</button>
+          <div class="form-check mt-2">
+            <input type="checkbox" class="form-check-input" id="addGeometry">
+            <label class="form-check-label" for="addGeometry">the_geom geometry(5254) eklensin</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <button class="btn btn-success" onclick="createTable()">Oluştur</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Bootstrap JS & Custom JS -->
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="layer.js"></script>
+</body>
+</html>

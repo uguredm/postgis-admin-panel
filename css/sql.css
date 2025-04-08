@@ -1,0 +1,259 @@
+/* Genel Sayfa Yapısı */
+body {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* ===========================
+   Veritabanı Tabloları Paneli
+   =========================== */
+.database-tables {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 2px solid #333;
+    position: fixed;
+    left: 80px; /* Sidebar (50px) + boşluk */
+    top: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.database-tables h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+/* ===========================
+   Şema Başlığı (Klasör gibi)
+   =========================== */
+.schema-header {
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    color: #fff;
+    font-size: 14px;
+    padding: 12px;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px; /* Ok ikonu ile metin arası boşluk */
+}
+
+.schema-header:hover {
+    background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+}
+
+.schema-header .arrow-icon i {
+    transition: transform 0.3s;
+    font-size: 16px;
+}
+
+/* ===========================
+   Şema İçindeki Tablo Listesi
+   =========================== */
+.schema-tables {
+    margin-left: 10px;  /* Girinti */
+    margin-bottom: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.schema-tables li {
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    margin-bottom: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px;
+    text-align: center;
+}
+
+.schema-tables li:hover {
+    background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+}
+
+.arrow-icon i {
+    transition: transform 0.3s;
+    font-size: 16px;
+}
+
+.arrow-icon i.open {
+    transform: rotate(90deg);
+}
+
+/* ===========================
+   Ana İçerik Alanı
+   =========================== */
+.sql-container {
+    margin-left: 330px;
+    width: calc(100% - 350px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+}
+
+/* ===========================
+   SQL Sorgu Alanı
+   =========================== */
+.sql-query-section {
+    width: 100%;
+    flex: 1;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    position: relative;
+    min-height: 150px;
+}
+
+/* ===========================
+   SQL Yazma Alanı
+   =========================== */
+.sql-input-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sql-input-box textarea {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    padding: 12px;
+    font-size: 14px;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    color: #fff;  /* Beyaz metin */
+    border: none;
+    border-radius: 8px;
+    resize: vertical;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+/* ===========================
+   SQL Çalıştır Butonu
+   =========================== */
+.sql-input-box button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #28a745; /* Yeşil buton */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.sql-input-box button:hover {
+    background: #218838;
+}
+
+/* ===========================
+   SQL Sonuç Alanı
+   =========================== */
+.sql-results {
+    width: 100%;
+    flex: 1;
+    border: 1px solid #444;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.sql-results-wrapper {  /* Az sonuç olsa bile 200px’ten küçük olmasın */
+    max-height: 400px;         /* Satır çoksa dikey scroll */
+    overflow-y: auto;      
+    overflow-x: auto;      
+    margin-top: 10px;      /* Başlıkla tablo arasında boşluk */
+}
+
+.sql-results-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.sql-results-wrapper tbody tr:first-child td {
+    padding-top: 10px;
+}
+
+/* Sticky header */
+.sql-results-wrapper thead tr th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #1c1c1c;
+    color: #fff;
+}
+
+.sql-results-wrapper th,
+.sql-results-wrapper td {
+    border: 1px solid #555;
+    padding: 6px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: #fff;
+    background: #1c1c1c;
+}
+
+/* ===========================
+   Scrollbar Ayarları
+   =========================== */
+.sql-results-wrapper::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.sql-results-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+.sql-results-wrapper::-webkit-scrollbar-track {
+    background: #333;
+}
+
+/* ===========================
+   Tablonun Başlık Satırını Sabitle
+   =========================== */
+.sticky-header {
+    position: auto;
+    top: 0;
+    z-index: 2;
+    background: #0d6efd !important;
+}
+
+/* ===========================
+   Küçük Ekran Desteği
+   =========================== */
+@media screen and (max-width: 1024px) {
+    .sql-container {
+        margin-left: 100px;
+        width: calc(100% - 120px);
+    }
+
+    .database-tables {
+        width: 180px;
+        left: 80px;
+    }
+}

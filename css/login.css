@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #212529;
+}
+
+.login-container {
+    width: 200px;
+    height: 150px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.login-container h1 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.login-container input {
+    width: 80%;
+    padding: 4px;
+    margin: 2px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.login-container button {
+    font-size: 10px;
+    padding: 4px 8px;
+    margin-top: 2px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    background: #218838;
+}
+
+/* Hata mesajı kapsayıcısı: her zaman 20px yükseklik kaplar */
+.error-container {
+    height: 20px;
+    margin-top: 5px;
+}
+
+#error-message {
+    font-size: 10px;
+    color: red;
+    line-height: 20px;
+    margin: 0;
+}

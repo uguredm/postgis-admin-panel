@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Loglar | Admin Panel</title>
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/logs.css">
+</head>
+<body>
+  <!-- Sabit Sidebar -->
+  <div class="sidebar">
+    <button onclick="goToDashboard()" title="Dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+    </button>
+    <button class="users-btn active" onclick="goToUsers()" title="Kullanıcılar">
+        <i class="fa-solid fa-users"></i>
+    </button>
+    <button onclick="goToSQL()" title="SQL Sorgu">
+        <i class="fa-solid fa-database"></i>
+    </button>
+    <button class="active" onclick="goToLogs()" title="Loglar">
+      <i class="fa-solid fa-file-alt"></i>
+    </button>
+    <button onclick="goToImport()" title="Import">
+        <i class="fa-solid fa-upload"></i>
+    </button>
+    <button class="active" onclick="goToLayers()">
+      <i class="bi bi-table"></i>
+    </button>
+    <button class="logout-btn" onclick="logout()" title="Çıkış Yap">
+        <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+  </div>
+  
+  <!-- İçerik Alanı -->
+  <div class="content">
+    <!-- Üst Kısım (Başlık + Butonlar) -->
+    <div class="log-header">
+      <h2 class="my-heading">Loglar</h2>
+      <div class="d-flex justify-content-start mb-3">
+        <button class="btn btn-primary me-2" onclick="loadLogs()">SQL Logları</button>
+        <button id="dbLogsButton" class="btn btn-primary me-2" onclick="loadDatabaseLogs()">Veritabanı Logları</button>
+      </div>
+    </div>
+
+    <!-- Kaydırılabilir Alan -->
+    <div class="logs-scroll-area">
+      <div id="sqlLogsSection">
+        <div class="table-responsive">
+          <table class="table table-dark table-striped">
+            <tbody id="logsTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Veritabanı Logları İçin Dosya İçeriği Bölümü -->
+      <div id="dbLogsSection" style="display: none;">
+        <pre id="dbLogsContent"></pre>
+        <p class="small text-muted text-center mt-2">Sadece son 500 log kaydı gösterilmektedir.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="logs.js"></script>
+</body>
+</html>

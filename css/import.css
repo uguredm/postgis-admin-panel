@@ -1,0 +1,132 @@
+/* import.css */
+
+/* Genellikle body'ye koyu arka plan isterseniz: */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+  color: #fff;
+}
+
+  
+  /* .import-content => Import sayfası içeriği */
+  .import-content {
+    margin-left: 80px; /* Sidebar genişliği kadar boşluk */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Başlık */
+  .import-content h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Form etiketleri */
+  .import-content label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Dosya seçimi input */
+  .import-content input[type="file"] {
+    margin-bottom: 0.8rem;
+    color: #fff;
+    background: #333;
+    border: 1px solid #444;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Butonlar */
+  .import-content button {
+    margin-top: 1rem;
+    background: #0b5ed7;    /* Mavi ton */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .import-content button:hover {
+    background: #0a53be;
+  }
+  
+  /* Seçim kutuları (select) */
+  .import-content select {
+    width: 250px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  /* Liste alanları */
+  .import-content ul {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  
+  .import-content ul li {
+    background: #2a2a2a;
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  /* Kolon eşleştirme alanı */
+  .mapping-container {
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background: #222;
+  }
+  
+  /* Tek satır eşleştirme alanı */
+  .mapping-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .mapping-item label {
+    margin: 0;
+    margin-right: 10px;
+    width: 160px;
+    font-weight: 500;
+  }
+  
+  .mapping-item select {
+    margin-right: 10px;
+  }
+  
+  /* Durum mesajı */
+  #statusMessage {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  #statusMessage.error {
+    color: #ff4444;
+  }
+  
+  #statusMessage.success {
+    color: #00ff99;
+  }
+  

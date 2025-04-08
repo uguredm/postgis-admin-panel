@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Sayfanın <head> veya body sonuna ekleyebilirsiniz -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="home.js"></script>
+</head>
+<body>
+
+
+    <!-- Sol panel (sidebar.css) -->
+    <div class="sidebar">
+        <button onclick="goToDashboard()" title="Dashboard">
+            <i class="fa-solid fa-chart-line"></i>
+        </button>
+        <button class="users-btn active" onclick="goToUsers()" title="Kullanıcılar">
+            <i class="fa-solid fa-users"></i>
+        </button>
+        <button onclick="goToSQL()" title="SQL Sorgu">
+            <i class="fa-solid fa-database"></i>
+        </button>
+        <button class="active" onclick="goToLogs()" title="Loglar">
+          <i class="fa-solid fa-file-alt"></i>
+        </button>
+        <button onclick="goToImport()" title="Import">
+            <i class="fa-solid fa-upload"></i>
+        </button>
+        <button class="active" onclick="goToLayers()"><i class="bi bi-table"></i></button>
+        <button class="logout-btn" onclick="logout()" title="Çıkış Yap">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+    </div>
+
+
+    <div class="main-content">
+        <!-- Üst Bilgi Alanı -->
+        <div class="top-info">
+            <div class="db-version">
+                <h3>Veritabanı Versiyonu</h3>
+                <p id="dbVersion">Yükleniyor...</p>
+            </div>
+            <div class="db-name">
+                <h3>Veritabanı Adı</h3>
+                <p id="dbName">postgisdb</p>
+            </div>
+            <div class="user-info">
+                <h3>Kullanıcı</h3>
+                <p id="username">...</p>
+            </div>
+        </div>
+        <div class="wrapper">  
+        <!-- Ana İçerik -->
+        <div class="content">
+            <!-- Gizli Kullanıcı Bilgileri -->
+            <div id="hiddenUserInfo" style="display: none;">
+                <span id="username"></span>
+                <span id="role"></span>
+            </div>
+
+            <!-- 1. Satır: Veritabanı ve Aktif Bağlantılar -->
+            <div class="info-container">
+                <div class="info-box ">
+                    <h3>Veritabanı Tabloları</h3>
+                    <p id="tableCount" style="display: none;"></p>
+                    <ul id="tablesList">Yükleniyor...</ul>
+                </div>
+                <div class="info-box">
+                    <h3>Aktif Bağlantılar</h3>
+                    <p id="activeConnections">Yükleniyor...</p>
+                </div>
+                <div class="info-box" id="sqlLogsBox">
+                    <h3 style="position: relative;">
+                      SQL Logları
+                      <i class="fa fa-cog" 
+                         style="position: absolute; top: 8px; right: 8px; cursor: pointer;"
+                         onclick="openSqlLogsModal()"
+                         title="SQL Loglarını Görüntüle"></i>
+                    </h3>
+                  
+                    <!-- Çizgi grafiği için Canvas -->
+                    <div style="height: 150px; margin: 0 auto;">
+                      <canvas id="sqlLogsChart"></canvas>
+                    </div>
+                  
+                    <!-- Toplam log sayısını burada göstereceğiz -->
+                    <p id="sqlLogCount">Yükleniyor...</p>
+                  </div>
+
+
+            <!-- 2. Satır: Kullanıcılar, Bilgilendirme, RAM/Disk -->
+            <div class="extra-info">
+                <!-- Kullanıcılar -->
+                <div class="info-box">
+                    <h3>Kullanıcılar</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Kullanıcı Adı</th>
+                          <th>Rol</th>
+                        </tr>
+                      </thead>
+                      <tbody id="usersList">
+                        <!-- Satırlar (tr) dinamik olarak ekleniyor -->
+                      </tbody>
+                    </table>
+                </div>
+
+                <!-- Bilgilendirme -->
+                <div class="info-box">
+                    <h3>Bilgilendirme Alanı</h3>
+                    <p>Buraya ek açıklamalar veya notlar eklenebilir.</p>
+                </div>
+
+                <!-- Sistem Kullanımı (RAM, Disk) -->
+                <div class="info-box ram-info">
+                    <h3>Sistem Kullanımı</h3>
+                    <div class="usage-group">
+                        <p><span id="ramUsage">Yükleniyor...</span></p>
+                        <div class="progress-bar">
+                            <div class="progress" id="ramUsageBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="usage-group" style="margin-top: 10px;">
+                        <p><span id="diskUsage">Yükleniyor...</span></p>
+                        <div class="progress-bar">
+                            <div class="progress" id="diskUsageBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div> <!-- .content sonu -->
+    </div><!-- .main-content sonu -->
+</div><!-- .wrapper sonu -->
+<!-- Modal (SQL Log Detayları) -->
+<div class="modal fade" id="sqlLogsModal" tabindex="-1" aria-labelledby="sqlLogsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl custom-modal-size">
+      <div class="modal-content custom-modal-content">
+        <div class="modal-header custom-modal-header">
+          <h5 class="modal-title" id="sqlLogsModalLabel">SQL Logları</h5>
+          <button type="button" class="btn-close btn-close-white"  data-bs-dismiss="modal" aria-label="Kapat"></button>
+        </div>
+        <div class="modal-body custom-modal-body">
+          <div id="sqlLogsContent">Yükleniyor...</div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</body>
+</html>
+
+

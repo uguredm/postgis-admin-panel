@@ -1,0 +1,263 @@
+/* ===========================
+   FANCY DASHBOARD & SIDEBAR
+   =========================== */
+
+/* 1) Genel Sayfa Stili */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+    min-height: 100vh;
+    overflow: hidden; /* Kaydırmayı engelle */
+}
+
+
+
+/* Üst Bilgi Alanı */
+.top-info {
+    display: flex;
+    gap: 8px;
+    margin-left: 80px;
+    padding: 8px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+.top-info > div {
+    flex: 1;
+    min-width: 140px;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* Ana İçerik */
+.content {
+    margin-left: 80px;
+    padding: 8px;
+}
+
+/* Info Container ve Extra Info */
+.info-container,
+.extra-info {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+/* Info Box - Sabit Genişlik & Maksimum Yükseklik */
+.info-box {
+    flex: 0 0 300px;
+    max-height: 300px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+}
+
+/* Sticky Başlık (h3) - scrolldan etkilenmesin */
+.info-box h3 {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #1E1F26; /* Tam opak, arkası gözükmesin */
+    margin: 0;
+    padding: 8px;
+    border-bottom: none;
+    font-size: 0.9rem;
+    color: #ccc;
+    text-align: center;
+}
+
+/* İçerik (liste, paragraflar, tablolar) */
+.info-box ul,
+.info-box p,
+.info-box table {
+    margin: 0;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Tablo içi hücreler */
+.info-box table th,
+.info-box table td {
+    text-align: center;
+}
+
+/* Tablo Başlık Hücreleri (thead th) sabit kalacak şekilde */
+.info-box table thead th {
+    position: sticky;
+    top: 34px;  /* h3 yüksekliğine eşit */
+    z-index: 2;
+    background: #1E1F26;
+    color: #ccc;
+    padding: 5px;
+    text-align: center;
+}
+
+
+/* Genel Tablo Stili */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    table-layout: fixed;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+    font-size: 0.8rem;
+    background: rgba(255,255,255,0.05);
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* RAM Info Kutusu */
+.ram-info {
+    flex: 0 0 300px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    margin: 5px 0;
+    padding: 10px;
+}
+.ram-info h3 {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #1E1F26; /* Tam opak */
+    padding: 8px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.progress {
+    height: 100%;
+    background: #0d6efd;
+}
+
+/* Şık Kaydırma Çubuğu (WebKit tarayıcılar için) */
+.info-box::-webkit-scrollbar {
+    width: 8px;
+}
+.info-box::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+.info-box::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+.info-box::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1024px) {
+    .top-info {
+        flex-wrap: wrap;
+    }
+    .info-container, .extra-info {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    .sidebar {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .sidebar button {
+        margin-bottom: 0;
+    }
+    .top-info {
+        margin-left: 0;
+        margin-top: 60px;
+    }
+    .content {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+.wrapper {
+    margin-left: 25px;
+    width: 100%;
+    height: 100%;
+    transform-origin: top left;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ölçekleme için */
+@media screen and (max-width: 1920px), (max-height: 1080px) {
+    .wrapper {
+        transform: scale(calc(min(100vw / 1920, 100vh / 1080)));
+    }
+}
+
+/* İkonun hover efekti vs. */
+.fa-cog:hover {
+    color: #3c3f43;
+  }
+  
+  
+/* Grafik boyutu */
+#sqlLogsChart {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+/* Modal boyutunu kısıtlamak için */
+.modal-dialog.custom-modal-size {
+    max-width: 1000px; /* İstediğiniz genişlik */
+  }
+  
+  /* Modal içeriğini temayla uyumlu hale getirmek için */
+  .modal-content.custom-modal-content {
+    background-color: #1E1F26;  /* Tema arka planı */
+    color: #fff;               /* Metin rengi */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+  }
+  
+  /* Modal üst (header) */
+  .modal-header.custom-modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* İçerik kısmı (body) - yüksekliği sınırlayıp dikey scroll eklemek için */
+  .modal-body.custom-modal-body {
+    max-height: 500px;         /* Dikeyde en fazla 400px olsun */
+    overflow-y: auto;          /* İçerik taştığında scroll */
+  }
+  

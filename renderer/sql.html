@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>SQL Sorgu | Admin Panel</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" >
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/sql.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+    <!-- Ana Container -->
+    <div class="container-fluid d-flex p-0">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button onclick="goToDashboard()" title="Dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+            </button>
+            <button class="users-btn active" onclick="goToUsers()" title="Kullanıcılar">
+                <i class="fa-solid fa-users"></i>
+            </button>
+            <button onclick="goToSQL()" title="SQL Sorgu">
+                <i class="fa-solid fa-database"></i>
+            </button>
+            <button class="active" onclick="goToLogs()" title="Loglar">
+              <i class="fa-solid fa-file-alt"></i>
+            </button>
+            <button onclick="goToImport()" title="Import">
+                <i class="fa-solid fa-upload"></i>
+            </button>
+            <button class="active" onclick="goToLayers()"><i class="bi bi-table"></i></button>
+            <button class="logout-btn" onclick="logout()" title="Çıkış Yap">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+        <!-- SQL Container -->
+        <div class="sql-container">
+            <!-- Veritabanı Tabloları -->
+            <div class="database-tables">
+                <h5><i class="bi bi-collection"></i> Veritabanı</h5>
+                <ul id="tablesList">Yükleniyor...</ul>
+            </div>
+
+            <!-- SQL Sorgu Bölümü -->
+            <div class="sql-query-section">
+                <div class="sql-input-box">
+                    <textarea id="sqlQuery" class="form-control sql-editor" placeholder="SQL sorgunuzu buraya yazın" style="color: #fff;"></textarea>
+                    <button id="runQueryBtn" onclick="runQuery()" title="Çalıştır">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SQL Sonuç Alanı -->
+            <div class="sql-results">
+                <h5 class="text-light">
+                    <i class="bi bi-table"></i> Sorgu Sonuçları
+                </h5>
+                <div class="sql-results-wrapper">
+                    <table id="resultsTable" class="table table-dark table-striped">
+                        <thead class="sticky-header">
+                            <tr id="tableHeader"></tr>
+                        </thead>
+                        <tbody id="resultsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ana JS Dosyası -->
+    <script defer src="sql.js"></script>
+</body>
+</html>

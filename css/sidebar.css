@@ -1,0 +1,56 @@
+/* Bootstrap Dark Mode Sidebar */
+.sidebar {
+    width: 80px;
+    background-color: #212529;  /* Sidebar koyu arka plan (opak) */
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Cam efektli butonlar */
+.sidebar button {
+    /* Boyut ve yerleşim */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+
+    /* Yazı/ikon boyutu ve rengi */
+    font-size: 20px;
+    color: #fff;
+
+    /* Arka plan: yarı şeffaf + blur */
+    background: rgba(255, 255, 255, 0.1);    /* Hafif beyaz */
+    backdrop-filter: blur(6px);             /* Bulanıklaştırma */
+    -webkit-backdrop-filter: blur(6px);     /* Safari desteği için */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* Kenar boşlukları, animasyon */
+    padding: 0;
+    margin: 0;
+    border: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Hover durumunda butonlar biraz daha belirgin olsun */
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Biraz daha opak */
+    transform: scale(1.1);
+}
+
+/* Logout butonu en alta */
+.sidebar .logout-btn {
+    margin-top: auto;
+}
+

@@ -1,0 +1,36 @@
+
+/* content: soldan boşluk + tam genişlik */
+.content {
+    margin-left: 80px;           /* Sidebar kadar boşluk */
+    min-height: 100vh;           /* Tam ekran yüksekliği */
+    background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);         /* Koyu arka plan */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+
+/* Overlay Add-User Butonu */
+.overlay-add-user {
+    position: fixed;
+    top: 40px;    /* Üstten değil, alttan 10px mesafe */
+    right: 120px;      /* Sağ yerine soldan 10px mesafe */
+    z-index: 999;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.overlay-add-user:hover {
+    background-color: #218838;  /* Hover durumunda biraz daha koyu yeşil */
+    transform: translateY(-2px); /* Hafif yukarı hareket */
+}
+
+.my-heading {
+    margin-top: 40px;
+  }

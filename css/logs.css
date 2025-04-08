@@ -1,0 +1,143 @@
+/* Genel sayfa ayarları */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1E1F26 0%, #3C3F51 100%);
+  color: #fff;
+  /* Dış scroll kaldırılıyor, içerik alanı scroll olacak */
+  overflow: hidden;
+}
+
+/* İçerik alanı */
+.content {
+  margin-left: 80px; /* Sidebar genişliği kadar boşluk */
+  padding: 20px;
+  background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+  height: 100vh; /* Tam ekran yüksekliği */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+.table-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+  border-bottom: 1px solid #444;
+}
+
+/* Tablo başlık satırı stilleri */
+.table-header table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header th {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #495057;
+  color: #fff;
+}
+
+/* Üst kısım sabit kalması için sticky header */
+.log-header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(90deg, #1E1F26 0%, #3C3F51 100%);
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+}
+
+/* Başlık */
+.my-heading {
+  font-size: 1.6rem;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+/* Daha belirgin kutucuk ayarları */
+.table.table-dark.table-striped tbody tr td {
+  border: 1px solid #555; /* Hücrelerin arasına belirgin çizgi */
+  padding: 12px; /* Daha belirgin padding */
+  font-size: 0.8rem;
+}
+
+/* Başlıkları sabit tutma (sticky header) */
+.table.table-dark.table-striped thead th {
+  position: sticky;
+  top: 0; /* Üst kenara yapışık */
+  background-color: #343a40; /* Arka plan rengi sabit kalmalı */
+  z-index: 10; /* Başlık üstte kalmalı */
+  border-bottom: 2px solid #666; /* Başlık alt çizgisi daha belirgin */
+}
+
+/* Kaydırılabilir alan */
+.logs-scroll-area {
+  max-height: calc(100vh - 160px); /* Başlığa göre ayarlama, gerekirse değiştirilebilir */
+  overflow-y: auto; /* Sadece içerik scroll olacak */
+  border-radius: 5px; /* Kenar yumuşatma */
+  border: 1px solid #444; /* Çerçeveyi daha belirgin yap */
+}
+
+
+/* Sabit başlık için konteyner, dışarıda scroll görünmesin */
+.table-header-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Tablo başlıkları */
+.table-header-container table thead th {
+  background-color: #343a40;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #495057;
+}
+
+/* Kaydırılabilir gövde */
+.table-body-scroll {
+  max-height: 400px; /* Gövdenin maksimum yüksekliği, içerik bu değeri aşarsa scroll olur */
+  overflow-y: auto;
+}
+
+/* Tablo gövdesi stilleri */
+.table-body-scroll table tbody td {
+  padding: 10px;
+  border: 1px solid #495057;
+  font-size: 0.9rem;
+}
+
+/* Satır hover efekti */
+.table-body-scroll table tbody tr:hover {
+  background-color: #3a3f47;
+}
+
+/* Veritabanı loglarını saran konteyner */
+#dbLogsSection {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+/* Log içeriği (veritabanı logları) */
+#dbLogsContent {
+  font-family: monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #ccc;
+  white-space: pre-wrap;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+
+
